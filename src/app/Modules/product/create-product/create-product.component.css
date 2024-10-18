@@ -1,0 +1,65 @@
+.general {
+  display: flex;
+  flex-direction: column;
+}
+
+.general .inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.general h1{
+    padding: 20px 0;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+}
+
+.description h1{
+    padding: 20px 0;
+}
+
+.description mat-form-field{
+    width: 100%;
+}
+
+.card{
+  border-radius: 0;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.card-header{
+  background-color: white;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.conn{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  
+}
+
+::ng-deep .mat-step-header .mat-step-label{
+  color: white;
+}
+::ng-deep .mat-step-header .mat-step-icon {
+  color: white;
+  background-color: black;
+}

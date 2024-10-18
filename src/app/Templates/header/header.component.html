@@ -1,0 +1,39 @@
+
+<mat-toolbar color="primary" class="mat-elevation-z8">
+	<img src="../../../assets/appletv-removebg-preview.png" alt="" routerLink="" style="width: 25px;cursor:pointer">
+	<span class="example-spacer"></span>
+	<button mat-button routerLink="product/question-ask" style="margin-right: 7px;">Questions</button>
+	<button mat-raised-button style="background-color: transparent;color:white;border:1px solid white;" routerLink="/auth/login" *ngIf="!isLoggedIn">
+	  <mat-icon>login</mat-icon> Login
+	</button>
+  
+	<!--Menu-->
+	<div class="dropdown" *ngIf="isLoggedIn">
+	  <!-- Image Button -->
+	  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+		aria-haspopup="true" aria-expanded="false">
+		<img src="https://hub.alfresco.com/legacyfs/online/alfresco/a12790_user-86426-avatar"
+		  alt="Admin" class="rounded-circle" style="width: 40px; height: 40px;">
+	  </button>
+  
+	  <!-- Dropdown Menu -->
+	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		<a class="dropdown-item" style="cursor: pointer;" routerLink="/account/profile">
+		  <span>Profile</span>
+		</a>
+		<a class="dropdown-item" style="cursor: pointer;" routerLink="/account/users-list" *ngIf="role == 'ROLE_ADMIN'">
+		  <span>Users list</span>
+		</a>
+		<a class="dropdown-item" style="cursor: pointer;" routerLink="/product/product-list" *ngIf="role == 'ROLE_ADMIN'">
+		  <span>Product list</span>
+		</a>
+		<a class="dropdown-item" style="cursor: pointer;" routerLink="/product/questions" *ngIf="role == 'ROLE_ADMIN'">
+		  <span>Question list</span>
+		</a>
+		<a class="dropdown-item" style="cursor: pointer;" (click)="logout()">
+		  <span>Logout</span>
+		</a>
+	  </div>
+	</div>
+  
+  </mat-toolbar>

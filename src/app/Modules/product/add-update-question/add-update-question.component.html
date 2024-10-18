@@ -1,0 +1,27 @@
+<h2 mat-dialog-title *ngIf="!data">Add Question</h2>
+<h2 mat-dialog-title *ngIf="data && data.question">Update Question</h2>
+<mat-dialog-content>
+  <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+  <form [formGroup]="questionForm" >
+    <mat-form-field>
+      <input matInput placeholder="Enter question text" formControlName="questionText">
+      <mat-error *ngIf="questionForm.get('questionText').invalid && questionForm.get('questionText').touched">
+        Question text is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Parent Question</mat-label>
+      <mat-select formControlName="parentQuestionId">
+        <mat-option *ngFor="let question of questions" [value]="question.question_id">
+          {{ question.questionText }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button  type="submit" (click)="submitForm()" *ngIf="!data">Submit</button>
+    <button mat-raised-button  type="submit" (click)="update()" *ngIf="data && data.question" >Update</button>
+
+  </form>
+
+</mat-dialog-content>

@@ -1,0 +1,64 @@
+
+<div class="container">
+  <div class="card mat-elevation-z8">
+    <div class="card-header">
+      <h1>Product list</h1>
+      <button routerLink="/product/create" mat-raised-button class="button-top">
+        <mat-icon>add</mat-icon>
+        Add product
+      </button>
+      <input type="text" class="form-control" placeholder="search" [(ngModel)]="search" (keyup)="filter()">
+    </div>
+    <div class="card-body">
+      <p-table [value]="filterProducts" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Color</th>
+            <th>Reference</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>
+              <img [src]="product.images[0]?.url" alt="first-image" width="70">
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>{{ product.price }} TND</td>
+            <td>{{ product.color }}</td>
+            <td>{{ product.reference }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+              <button mat-icon-button color="warn" (click)="deleteProduct(product.product_id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button color="accent" [routerLink]="['/product/create' , product.product_id]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button [routerLink]="['/product/product-details', product.product_id]">
+                <mat-icon>info</mat-icon>
+              </button>
+            </td>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

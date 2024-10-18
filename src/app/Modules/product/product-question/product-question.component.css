@@ -1,0 +1,42 @@
+.spacer {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  margin: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 75vh;
+}
+
+.header {
+  margin: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 75vh;
+  color: white;
+}
+
+.card {
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+
+.card-title{
+  font-size: 1.2em;
+}

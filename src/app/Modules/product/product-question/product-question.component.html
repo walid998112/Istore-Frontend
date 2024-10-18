@@ -1,0 +1,18 @@
+<div class="spacer">
+  <div class="header">
+    <a href="/product/question-ask" style="font-size:1.3em"> <- Back to questions</a>
+  </div>
+  <div class="empty" *ngIf="products.length == 0">
+    <h1>No product found !</h1>
+  </div>
+  <div class="card-container" *ngIf="products.length>0">
+    <div class="card" style="width: 18rem;" *ngFor="let product of products">
+      <img [src]="product.images[0]?.url" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description | text }}</p>
+        <button mat-raised-button style="color: white;background-color:transparent;border:1px solid white;" [routerLink]="['/product/product-details',product.product_id]">Details</button>
+      </div>
+    </div>
+  </div>
+</div>

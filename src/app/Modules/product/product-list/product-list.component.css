@@ -1,0 +1,44 @@
+.card {
+  max-width: 1000px;
+  background-color: rgba(22, 22, 23);
+  color: white;
+  border-radius: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120vh;
+}
+
+.card h1 {
+  margin: 0;
+}
+
+
+th,
+td {
+  color: white;
+  background-color: rgba(22, 22, 23);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-control {
+  background-color: transparent;
+  /* Set background color to transparent */
+  color: white;
+  /* Set text color to white */
+  width: 300px;
+}
+
+.form-control::placeholder {
+  color: white;
+  /* Set placeholder text color to white */
+}

@@ -1,0 +1,27 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  min-height: 100vh;
+}
+
+.form-control{
+    background-color: transparent;
+    color: white;
+}
+
+.form-control::placeholder{
+    color: white;
+}
+
+button {
+  float: right;
+  margin: 20px;
+}
+
+mat-expansion-panel{
+  margin: 20px 0;
+  color: white;
+  background-color: rgba(30, 30, 30);
+}

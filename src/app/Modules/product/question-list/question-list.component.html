@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="buttons">
+    <button (click)="openAddDialog()" mat-raised-button style="background-color: transparent;color:white ;border:1px solid white">
+      <mat-icon>add</mat-icon>add
+    </button>
+  </div>
+  <div class="alert alert-danger" (click)="errMessage = ''" *ngIf="errMessage"
+    style="max-width:600px;margin:10px auto;cursor:pointer;">{{ errMessage }}</div>
+  <div class="search">
+    <input type="text" class="form-control" style="width: 250px;margin:auto" placeholder="Search..."
+      [(ngModel)]="search" (keyup)="filter()">
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let question of filterQuestions">
+      <mat-expansion-panel-header>
+        <mat-panel-title style="color: white;">
+          {{ question.questionText }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Parent:
+        {{ question.parentQuestion?question.parentQuestion.questionText : 'No parent' }}</p>
+      <div class="actions">
+        <button mat-button color="accent" (click)="delete(question.question_id)">delete</button>
+        <button mat-button color="warn" (click)="openUpdateDialog(question)">update</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

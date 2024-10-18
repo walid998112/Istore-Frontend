@@ -1,0 +1,115 @@
+<div class="buttons">
+  <button mat-raised-button routerLink="/product/question-ask">Back to questions</button>
+  <button mat-raised-button (click)="redirectToBuyLink(product?.buyLink)">Buy</button>
+</div>
+
+<div class="image-container">
+  <div class="selected">
+    <img [src]="selectedImage?.url" alt="" (click)="openSelectedImage()">
+  </div>
+  <div class="others">
+    <img *ngFor="let image of images" [src]="image.url" alt="" (click)="selectImage(image.image_id)"
+      [ngClass]="{'opacity-img ': image.image_id != selectedImage?.image_id}">
+  </div>
+  <lightgallery [settings]="settings" [onInit]="onInit" style="display: none;">
+    <a [attr.href]="image?.url" *ngFor="let image of images">
+      <img [src]="image?.url" alt="">
+    </a>
+  </lightgallery>
+
+  <div class="scrolls">
+    <button class="scroll-button " (click)="scrollBackReviews()">&#10094;</button>
+    <button class="scroll-button " (click)="scrollForwardReviews()">&#10095;</button>
+  </div>
+</div>
+
+<div class="table-container">
+  <div class="table table-responsive table-dark table-striped">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>{{ product?.name }}</td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td>{{ product?.price }}Tnd</td>
+      </tr>
+      <tr>
+        <th>Color</th>
+        <td>{{ product?.color }}</td>
+      </tr>
+      <tr>
+        <th>Quantity</th>
+        <td>{{ product?.quantity }}</td>
+      </tr>
+      <tr>
+        <th>Reference</th>
+        <td>{{ product?.reference }}</td>
+      </tr>
+      <tr>
+        <th>Category</th>
+        <td>{{ product?.category.name }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ product?.description }}</td>
+      </tr>
+      <tr>
+        <th>CPU Model</th>
+        <td>{{ product?.cpu.model }}</td>
+      </tr>
+      <tr>
+        <th>CPU Speed</th>
+        <td>{{ product?.cpu.speed }}</td>
+      </tr>
+      <tr>
+        <th>CPU Cores Number</th>
+        <td>{{ product?.cpu.corsNumber }}</td>
+      </tr>
+      <tr>
+        <th>RAM</th>
+        <td>{{ product?.ram }}MB</td>
+      </tr>
+      <tr>
+        <th>Battery Capacity</th>
+        <td>{{ product?.batteryCapacity }}mAh</td>
+      </tr>
+      <tr>
+        <th>Operating System</th>
+        <td>{{ product?.operatingSystem }}</td>
+      </tr>
+      <tr>
+        <th>Screen Size</th>
+        <td>{{ product?.screen.size }}</td>
+      </tr>
+      <tr>
+        <th>Screen Resolution</th>
+        <td>{{ product?.screen.resolution }}</td>
+      </tr>
+      <tr>
+        <th>Screen Type</th>
+        <td>{{ product?.screen.type }}</td>
+      </tr>
+      <tr>
+        <th>Camera Back Resolution</th>
+        <td>{{ product?.camera.backResol }}MP</td>
+      </tr>
+      <tr>
+        <th>Camera Front Resolution</th>
+        <td>{{ product?.camera.frontResol }}MP</td>
+      </tr>
+      <tr>
+        <th>Question</th>
+        <td>{{ product?.question.questionText }}</td>
+      </tr>
+      <tr>
+        <th>Connectivity Options</th>
+        <td>
+          <ul>
+            <li *ngFor="let connectivity of product?.connectivityOptions">{{ connectivity.option }}</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

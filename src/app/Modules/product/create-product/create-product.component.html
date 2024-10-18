@@ -1,0 +1,276 @@
+<div class="container">
+  <div class="card mat-elevation-z8">
+    <div class="card-header">
+      <div class="header" *ngIf="!id_product">
+        <h1>Create product</h1>
+        <button mat-raised-button (click)="createProduct()">Save</button>
+      </div>
+      <div class="header" *ngIf="id_product">
+        <h1>Create product</h1>
+        <button mat-raised-button (click)="updateProduct()">update</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="productForm">
+        <div class="alert alert-danger" *ngIf="errMessage">{{ errMessage }}</div>
+        <mat-stepper orientation="vertical">
+          <mat-step>
+            <ng-template matStepLabel>General information</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>General information</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <input matInput placeholder="Enter product name" formControlName="name">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="Enter price" formControlName="price">
+                    <span matPrefix>TND &nbsp;</span>
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="Enter quantity" formControlName="quantity">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput placeholder="Reference" formControlName="reference">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="Ram" formControlName="ram">
+                    <span matPrefix>MB &nbsp;</span>
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder=" Battery Capacity" formControlName="batteryCapacity">
+                    <span matPrefix>mAh &nbsp;</span>
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Operating system</mat-label>
+                    <mat-select formControlName="operatingSystem">
+                      <mat-option value="MacOS">MacOS</mat-option>
+                      <mat-option value="IOS">IOS</mat-option>
+                      <mat-option value="IPADOS">IADOS</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Color</mat-label>
+                    <mat-select formControlName="color">
+                      <mat-option value="blue">blue</mat-option>
+                      <mat-option value="black">black</mat-option>
+                      <mat-option value="red">red</mat-option>
+                      <mat-option value="pink">pink</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="categoryId">
+                      <mat-option *ngFor="let cat of categories" [value]="cat.category_id">{{ cat.name }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div> <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Description</ng-template>
+            <ng-template matStepContent>
+              <div class="description">
+                <h1>Description</h1>
+                <mat-form-field>
+                  <mat-label>Description</mat-label>
+                  <textarea matInput placeholder="Ex. It makes me feel..." rows="4"
+                    formControlName="description"></textarea>
+                </mat-form-field>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Processor</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>Processor</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <input matInput placeholder="Model" formControlName="model">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                    <input matInput placeholder="speed" formControlName="speed">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="cors number" formControlName="corsNumber">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Screen</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>About the screen</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <input matInput placeholder="screen size" formControlName="size">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput placeholder="screen resolution" formControlName="resolution">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput placeholder="screen type" formControlName="type">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Camera</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>About the camera</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="back cam resolution" formControlName="backResol">
+                    <span matPrefix>MP &nbsp;</span>
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="front cam resolution" formControlName="frontResol">
+                    <span matPrefix>MP &nbsp;</span>
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Connectivity Options</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>Connectivity options</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <mat-label>Connectivity options</mat-label>
+                    <mat-select (selectionChange)="getValues($event)">
+                      <mat-option *ngFor="let con of connectivityOptions" [value]="con.id">{{ con.option }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="conn">
+                  <p *ngFor="let s of selected" (click)="deleteSelected(s.id)" style="cursor: pointer;">{{ s.option }}</p>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Link in store</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>Link in store</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <input matInput type="link" placeholder="Link in store" formControlName="buyLink">
+                    <mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Pictures</ng-template>
+            <ng-template matStepContent>
+
+              <div class="general">
+                <h1>Pictures</h1>
+                <div class="inputs">
+                  <button (click)="fileInput.click()" mat-stroked-button>
+                    <mat-icon>add</mat-icon>Image
+                  </button>
+                  <button (click)="clearImages()" mat-stroked-button>Clear</button>
+                  <div class="mt-3">
+                    <input #fileInput type="file" accept="image/*" class="form-control" style="display: none"
+                      (change)="onFileSelected($event)" multiple />
+                    <div style="gap: 20px;display:flex;flex-direction:row;flex-wrap:wrap">
+                      <img [src]="imageLink" alt="Image" width="400" *ngFor="let imageLink of imagesLinks">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Question</ng-template>
+            <ng-template matStepContent>
+              <div class="general">
+                <h1>Link to a question</h1>
+                <div class="inputs">
+                  <mat-form-field>
+                    <mat-label>Question</mat-label>
+                    <mat-select formControlName="questionId">
+                      <mat-option *ngFor="let quest of questions" [value]="quest.question_id">{{ quest.questionText }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button matStepperPrevious>Back</button>
+            </ng-template>
+          </mat-step>
+        </mat-stepper>
+      </form>
+    </div>
+  </div>
+
+</div>

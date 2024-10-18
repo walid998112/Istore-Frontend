@@ -1,0 +1,49 @@
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row content">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+          width="150px"
+          src="https://hub.alfresco.com/legacyfs/online/alfresco/a12790_user-86426-avatar"><span
+          class="font-weight-bold">{{ user?.fullName? user?.fullName : '-' }}</span><span
+          class="text-white-50">{{ user?.email? user?.email: '-' }}</span><span> </span>
+      </div>
+    </div>
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <div class="alert alert-danger" *ngIf="errMessage">{{ errMessage }}</div>
+        <form [formGroup]="myForm" (ngSubmit)="updateUser()">
+          <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Full name</label><input type="text" class="form-control"
+                placeholder="enter full name" value="" formControlName="fullName"></div>
+            <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control"
+                placeholder="enter email" value="" formControlName="email"></div>
+            <div class="col-md-12"><label class="labels">Birth date</label><input type="date" class="form-control"
+                placeholder="enter birth date" value="" formControlName="birthDate"></div>
+            <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control"
+                placeholder="enter username" value="" formControlName="username"></div>
+            <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control"
+                placeholder="enter password" value="" formControlName="password"></div>
+          </div>
+          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
+              Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center experience"><span>Services</span><span
+            class="border px-3 p-1 add-experience" routerLink="/product/question-ask"><i
+              class="fa fa-plus"></i>&nbsp;Questions</span></div><br>
+        <div class="col-md-12">
+          <strong>
+            <mat-icon>description</mat-icon>
+            Find All Apple product here 
+          </strong></div> <br>
+      </div>
+    </div>
+  </div>
+</div>
